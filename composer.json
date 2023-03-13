@@ -1,0 +1,10 @@
+{
+    "require": {
+        "steampixel/simple-php-router": "^0.7.1",
+        "guzzlehttp/guzzle": "^7.5",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
+    }
+}
