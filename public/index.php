@@ -1,6 +1,8 @@
 <?php 
 
-// Autoload files using composer
+/**
+ * Autoload files using composer
+ */
 require_once __DIR__ . './../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
