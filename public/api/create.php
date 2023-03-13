@@ -5,6 +5,7 @@ use GuzzleHttp\Psr7\Request;
 
 /**
  * PayPal integration documentation:
+ *
  * @link https://developer.paypal.com/docs/checkout/standard/integrate/
  */
 class PayPalPayments

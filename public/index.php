@@ -14,49 +14,63 @@ use Steampixel\Route;
 
 
 // Add your first route
-Route::add('/', function() {
+Route::add(
+    '/', function () {
   
-    print("<pre>");
-    print_r($_ENV);
-    print("</pre>");
+        print("<pre>");
+        print_r($_ENV);
+        print("</pre>");
   
-    return 'WELCOME!';
-});
+        return 'WELCOME!';
+    }
+);
 
-Route::add('/bar', function() { 
-    include_once(__DIR__ . "/app/index.php");
-});
+Route::add(
+    '/bar', function () { 
+        include_once __DIR__ . "/app/index.php";
+    }
+);
 
 
-Route::add('/foo', function() { 
+Route::add(
+    '/foo', function () { 
     
-    echo "Hello world";
+        echo "Hello world";
     
-    // include_once(__DIR__ . "/src/app/index.php");
-});
+        // include_once(__DIR__ . "/src/app/index.php");
+    }
+);
 
-Route::add('/api/create-paypal-order', function() { 
-    $paypalPayments = new PayPalPayments();
-    $paypalPayments->createOrder();
-}, 'post');
+Route::add(
+    '/api/create-paypal-order', function () { 
+        $paypalPayments = new PayPalPayments();
+        $paypalPayments->createOrder();
+    }, 'post'
+);
 
-Route::add('/api/capture-paypal-order', function() { 
+Route::add(
+    '/api/capture-paypal-order', function () { 
     
-    $data = json_decode(file_get_contents('php://input'), true);
-// print_r($data);
+        $data = json_decode(file_get_contents('php://input'), true);
+        // print_r($data);
     
-    $paypalPayments = new PayPalPayments();
-    $paypalPayments->captureOrder($data["orderID"]);
-}, 'post');
+        $paypalPayments = new PayPalPayments();
+        $paypalPayments->captureOrder($data["orderID"]);
+    }, 'post'
+);
 
-Route::add('/api/test-function', function() {
-    test();
-});
+Route::add(
+    '/api/test-function', function () {
+        test();
+    }
+);
 
-Route::add('/xdebug-info', function() { 
-    xdebug_info();
-    // phpinfo();
-});
+Route::add(
+    '/xdebug-info', function () { 
+        xdebug_info();
+        // phpinfo();
+    }
+);
 
 
 // Route::add('/api/test-create-paypal-order', function() { 
