@@ -9,7 +9,6 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 
 require_once __DIR__ . '/api/create.php';
-require_once __DIR__ . '/api/test.php';
 
 // Use this namespace
 use Steampixel\Route;
