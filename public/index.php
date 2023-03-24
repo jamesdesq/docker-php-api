@@ -20,6 +20,14 @@ Route::add(
 );
 
 Route::add(
+    '/api/content/list-content-async', function() { 
+        $cmsRequest = new CmsRequest();
+        $response = $cmsRequest->getItemsAsync();
+        echo $response;
+    }
+);
+
+Route::add(
     '/api/content/list-content', function() { 
         $cmsRequest = new CmsRequest();
         $response = $cmsRequest->getItems();
@@ -28,8 +36,9 @@ Route::add(
 );
 
 Route::add(
-    '/bar', function () { 
-        include_once __DIR__ . "/app/index.php";
+    '/test-post', function () { 
+        $cmsRequest = new CmsRequest();
+        $response = $cmsRequest->submitPost();
     }
 );
 
