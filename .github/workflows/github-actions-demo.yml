@@ -14,5 +14,4 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner"
       - name: Install composer
         uses: php-actions/composer@v6
-      - name: Run codesniffer
       - run: ./vendor/squizlabs/php_codesniffer/bin/phpcs --warning-severity=6 .
