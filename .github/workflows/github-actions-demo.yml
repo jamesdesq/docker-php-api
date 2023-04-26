@@ -15,5 +15,4 @@ jobs:
       - name: Install composer
         uses: php-actions/composer@v6
       - name: Run codesniffer
-        run: ./vendor/bin/phpcs --config-set show_warnings 0
       - run: ./vendor/squizlabs/php_codesniffer/bin/phpcs --warning-severity=6 .
