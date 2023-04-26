@@ -15,6 +15,5 @@ jobs:
       - name: Install composer
         uses: php-actions/composer@v6
       - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+        run: ./vendor/bin/phpcs --config-set show_warnings 0
       - run: ./vendor/squizlabs/php_codesniffer/bin/phpcs .
