@@ -46,10 +46,6 @@ class PayPalPayments
         $this->_baseUrl = $_ENV['PAYPAL_CLIENT_ENDPOINT'];
     }
 
-    function justToTest() {
-        echo "just to test";
-    }
-
     /**
      * Creates the order
      *
