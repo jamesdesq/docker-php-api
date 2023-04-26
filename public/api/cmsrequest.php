@@ -1,17 +1,19 @@
-<?php 
+<?php
+namespace public\api;
 
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
+
 class CmsRequest
 {
-
     private $space;
 
     private $accessToken;
 
     private $domain;
-    
-    function __construct() { 
+
+    public function __construct()
+    {
         $this->space = $_ENV["CONTENTFUL_SPACE_ID"];
 
         $this->accessToken = $_ENV["CONTENTFUL_ACCESS_TOKEN"];
@@ -19,7 +21,8 @@ class CmsRequest
         $this->domain = $_ENV["CONTENTFUL_DOMAIN"];
     }
 
-    function getItemsAsync() { 
+    public function getItemsAsync()
+    {
 
         $contentType = "story";
         $search = "";
@@ -43,7 +46,8 @@ class CmsRequest
         )->wait();
     }
 
-    function getItems() { 
+    public function getItems()
+    {
 
         $contentType = "story";
         $search = "";
@@ -57,27 +61,27 @@ class CmsRequest
 
         $client = new GuzzleHttp\Client();
         $res = $client->request('GET', $url, ["timeout => 1"]);
-        
-        $response = json_decode($res->getBody()->getContents(), TRUE);
+
+        $response = json_decode($res->getBody()->getContents(), true);
 
         d($response);
-        
+
         $processed = [];
 
-        if (isset($response["items"])) { 
-            foreach($response["items"] as $v) { 
+        if (isset($response["items"])) {
+            foreach ($response["items"] as $v) {
                 $processed[] = [
                     "title" => $v["fields"]["title"],
                     "summary" => $v["fields"]["summary"],
                     "url" => $v["fields"]["url"],
                 ];
-                
             }
         }
         echo json_encode($processed);
     }
 
-    function submitPost() { 
+    public function submitPost()
+    {
         $account_data['device'] = "Test";
         $account_data['mac'] = "a1-a1-a1-b2-b2-b2";
         $account_data['accountId'] = "123abc";
@@ -108,16 +112,16 @@ class CmsRequest
                 d("Problems");
             }
         )->wait();
-
     }
 
-    function orderResponse($body) { 
-        $response = json_decode($body, TRUE);
+    public function orderResponse($body)
+    {
+        $response = json_decode($body, true);
 
         $processed = [];
 
-        if (isset($response["items"])) { 
-            foreach($response["items"] as $v) { 
+        if (isset($response["items"])) {
+            foreach ($response["items"] as $v) {
                 $processed[] = [
                     "title" => $v["fields"]["title"],
                     "summary" => $v["fields"]["summary"],

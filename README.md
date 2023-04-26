@@ -12,7 +12,17 @@ This repo started as two repos. One was a sandbox I was using to do some stuff w
 
 ## Code style
 
-You can run codesniffer with `./vendor/squizlabs/php_codesniffer/bin/phpcs --ignore=/vendor/ .` 
+You can run codesniffer with `./vendor/squizlabs/php_codesniffer/bin/phpcs --ignore=/vendor/ .`
+
+### Further configuration
+
+- I'm using this vscode extension: https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs
+- Add a phpcs.xml in the docroot and use it to configure the extension with the following in your settings.json: 
+```
+    "phpcs.standard": "./phpcs.xml",
+```
+- You can run code beautifier and fixer with `./vendor/bin/phpcbf path/to/file.php`
+- I set codesniffer to ignore warnings with `./vendor/bin/phpcs --config-set show_warnings 0`, though that doesn't set in in the xml file
 
 ## Debugging
 

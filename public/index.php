@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 /**
  * Autoload files using composer
  */
+
 require_once __DIR__ . './../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -14,13 +15,15 @@ require_once __DIR__ . '/api/cmsrequest.php';
 use Steampixel\Route;
 
 Route::add(
-    '/', function () {
+    '/',
+    function () {
         return 'Hello world!';
     }
 );
 
 Route::add(
-    '/api/content/list-content-async', function() { 
+    '/api/content/list-content-async',
+    function () {
         $cmsRequest = new CmsRequest();
         $response = $cmsRequest->getItemsAsync();
         echo $response;
@@ -28,7 +31,8 @@ Route::add(
 );
 
 Route::add(
-    '/api/content/list-content', function() { 
+    '/api/content/list-content',
+    function () {
         $cmsRequest = new CmsRequest();
         $response = $cmsRequest->getItems();
         echo $response;
@@ -36,7 +40,8 @@ Route::add(
 );
 
 Route::add(
-    '/test-post', function () { 
+    '/test-post',
+    function () {
         $cmsRequest = new CmsRequest();
         $response = $cmsRequest->submitPost();
     }
@@ -44,26 +49,29 @@ Route::add(
 
 
 Route::add(
-    '/api/create-paypal-order', function () { 
+    '/api/create-paypal-order',
+    function () {
         $paypalPayments = new PayPalPayments();
         $paypalPayments->createOrder();
-    }, 'post'
+    },
+    'post'
 );
 
 Route::add(
-    '/api/capture-paypal-order', function () { 
-    
-        $data = json_decode(file_get_contents('php://input'), true);   
+    '/api/capture-paypal-order',
+    function () {
+        $data = json_decode(file_get_contents('php://input'), true);
         $paypalPayments = new PayPalPayments();
         $paypalPayments->captureOrder($data["orderID"]);
-    }, 'post'
+    },
+    'post'
 );
 
 Route::add(
-    '/xdebug-info', function () { 
+    '/xdebug-info',
+    function () {
         xdebug_info();
     }
 );
 
 Route::run('/');
-
