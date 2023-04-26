@@ -15,5 +15,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-            - name: List files in the repository
       - run: ./vendor/squizlabs/php_codesniffer/bin/phpcs .
